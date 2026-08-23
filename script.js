@@ -1,11 +1,21 @@
-function buttonOne() {
-    alert("You clicked Button 1!");
-}
+<script>
+    const slider = document.getElementById("slider");
+    const value = document.getElementById("value");
 
-function buttonTwo() {
-    alert("You clicked Button 2!");
-}
+    slider.addEventListener("input", function() {
+        value.value = slider.value;
+    });
 
-function buttonThree() {
-    alert("You clicked Button 3!");
-}
+    value.addEventListener("input", function() {
+        let number = Number(value.value);
+
+        if (number >= 1 && number <= 100) {
+            slider.value = number;
+        }
+    });
+
+    function submitAnswer() {
+        document.getElementById("result").textContent =
+            "You selected " + slider.value + "%.";
+    }
+</script>
