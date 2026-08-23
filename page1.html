@@ -9,31 +9,49 @@
 
 <body>
 
-    <h1>nora</h1>
+    <h1>Question 1</h1>
 
-    <p>shocker</p>
+    <p>How much do you agree?</p>
 
     <input type="range" id="slider" min="1" max="100" value="50">
 
     <p>
-    <input type="number" id="value" min="1" max="100" value="50">%
+        <input type="number" id="value" min="1" max="100" value="50">%
     </p>
-    
+
     <button onclick="submitAnswer()">Submit</button>
 
     <p id="result"></p>
 
+
     <script>
         const slider = document.getElementById("slider");
         const value = document.getElementById("value");
+        const result = document.getElementById("result");
 
+        // When the slider moves, update the number
         slider.addEventListener("input", function() {
-            value.textContent = slider.value;
+            value.value = slider.value;
         });
 
+        // When the number changes, move the slider
+        value.addEventListener("input", function() {
+            let number = Number(value.value);
+
+            if (number >= 1 && number <= 100) {
+                slider.value = number;
+            }
+        });
+
+        // Submit the selected percentage
         function submitAnswer() {
-            document.getElementById("result").textContent =
-                "You selected " + slider.value + "%.";
+            let number = Number(value.value);
+
+            if (number >= 1 && number <= 100) {
+                result.textContent = "Submitted: " + number + "%";
+            } else {
+                result.textContent = "Please enter a number between 1 and 100.";
+            }
         }
     </script>
 
