@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Question 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Question 1</h1>
+
+    <p>How much do you agree?</p>
+
+    <input type="range" id="slider" min="1" max="100" value="50">
+
+    <p>
+        <span id="value">50</span>%
+    </p>
+
+    <button onclick="submitAnswer()">Submit</button>
+
+    <p id="result"></p>
+
+    <script>
+        const slider = document.getElementById("slider");
+        const value = document.getElementById("value");
+
+        slider.addEventListener("input", function() {
+            value.textContent = slider.value;
+        });
+
+        function submitAnswer() {
+            document.getElementById("result").textContent =
+                "You selected " + slider.value + "%.";
+        }
+    </script>
+
+</body>
+
+</html>
