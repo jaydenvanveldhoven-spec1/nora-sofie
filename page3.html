@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>nora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>nora</h1>
+
+    <p>shocker</p>
+
+    <input type="range" id="slider" min="0" max="100" value="50">
+
+    <p>
+        <input type="number" id="value" min="0" max="100" value="50">%
+    </p>
+
+    <button onclick="submitAnswer()">update</button>
+
+    <p id="result"></p>
+
+
+    <script>
+        const slider = document.getElementById("slider");
+        const value = document.getElementById("value");
+        const result = document.getElementById("result");
+
+        // When the slider moves, update the number
+        slider.addEventListener("input", function() {
+            value.value = slider.value;
+        });
+
+        // When the number changes, move the slider
+        value.addEventListener("input", function() {
+            let number = Number(value.value);
+
+            if (number >= 0 && number <= 100) {
+                slider.value = number;
+            }
+        });
+
+        // Submit the selected percentage
+        function submitAnswer() {
+            let number = Number(value.value);
+
+            if (number >= 0 && number <= 100) {
+                result.textContent = "Submitted: " + number + "%";
+            } else {
+                result.textContent = "error";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
