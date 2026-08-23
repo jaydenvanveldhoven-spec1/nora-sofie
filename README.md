@@ -1,0 +1,2 @@
+# nora-sofie
+sofie controls
